@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoginScreen from './screens/LoginScreen';
+// import SignupScreen from './screens/SignupScreen';
+// import ProductScreen from './screens/ProductScreen';
+// import PurchaseScreen from './screens/PurchaseScreen';
+// import ProfileScreen from './screens/ProfileScreen';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} options={{ title: 'Login' }} />
+        {/* <Stack.Screen name="Signup" component={SignupScreen} options={{ title: 'Signup' }} />
+        <Stack.Screen name="Product" component={ProductScreen} options={{ title: 'Product' }} />
+        <Stack.Screen name="Purchase" component={PurchaseScreen} options={{ title: 'Purchase' }} />
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{ title: 'Profile' }} /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
